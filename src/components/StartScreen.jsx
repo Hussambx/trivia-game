@@ -4,11 +4,9 @@ import blob2 from "../assets/blobs.png"
 export default function StartScreen(){
 return(
     <>
-    <img src={blob}></img>
     <h1>Quizzical</h1>
     <h4>Test Your Knowledge</h4>
     <button type="button">Start Quiz</button>
-    <img src={blob2}></img>
     </>
 )
 
