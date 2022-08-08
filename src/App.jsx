@@ -7,7 +7,6 @@ function App() {
   return (
     <div className="App">
       <Start/>
-      <h1>Test</h1>
     </div>
   )
 }
