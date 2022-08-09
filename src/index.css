@@ -6,7 +6,10 @@
  
 }
 
-
+h2{
+  margin-top: 12px;
+  text-align: center;
+}
 h1{
   text-align: center;
   font-size: 50px;
@@ -21,7 +24,7 @@ top: auto;
 color: #293264;
 }
 
-button{
+b1{
   display:block;
   margin: auto;
   height: 52px;
@@ -40,3 +43,21 @@ button:hover{
   background-color: rgb(37, 14, 243);
 }
 
+.options{
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap:10px;
+}
+.options>button{
+  height: 52px;
+  width: 150px;
+  background: #D6DBF5;
+  border-radius: 7.94239px;
+ 
+}
+
+hr{
+  margin-top: 15px;
+  width: 100%;
+}
