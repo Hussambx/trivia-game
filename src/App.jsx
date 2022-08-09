@@ -15,16 +15,31 @@ function App() {
         async function getQuestions() {
             const res = await fetch("https://opentdb.com/api.php?amount=5")
             const data = await res.json()
-            console.log(data.results[0]);
+            console.log(data.results);
+            SetData(data.results);
         }
         getQuestions()
-    }, [])
+    }, [isShown])
     
+    const questionsdata = apidata.map(travel=>{
+      console.log(travel.correct_answer);
+      return(
+        <Questions
+        mainquestion = {travel.question}
+        correctanswer = {travel.correct_answer}
+        questiona = {travel.incorrect_answers[0]}
+        questionb = {travel.incorrect_answers[1]}
+        questionc = {travel.incorrect_answers[2]}
+      />
+      )
+      
+    
+     })
  
   return (
     <div className="App">
        {isShown &&<Start handleClick ={toggle}/>}
-       {isShown==false && <Questions/>}
+        {questionsdata}
     </div>
   )
 }
