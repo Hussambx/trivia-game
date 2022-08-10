@@ -16,13 +16,14 @@ export default function Questions(props){
    
 return(
     <>
-    <h2>Hi This Is My Test Question</h2>
+    <h2>{props.mainquestion}</h2>
     <div className="options">
-    <button className="b11">Q1</button>
-    <button className="b12">Q1</button>
-    <button className="b13">Q1</button>
-    <button className="b14">Q1</button>
+    {questions[0]!=null ? <button className="b11">{questions[0]}</button>:console.log("no")}
+    {questions[1]!=null ?  <button className="b12">{questions[1]}</button>:console.log("no")}
+    {questions[2]!=null ? <button className="b13">{questions[2]}</button>:console.log("no")}
+    {questions[3]!=null? <button className="b14">{questions[3]}</button>:console.log("no")}
     </div>
+    <hr></hr>
     </>
     
 
