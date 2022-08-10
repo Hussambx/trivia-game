@@ -3,21 +3,25 @@ import React from "react";
 export default function Questions(props){
     let buttons = ["b11","b12","b13","b14"]
     let answer = props.correctanswer;
-    let selected = 5;
+   const [selected, SetSelected] = React.useState(5);
     let questions = [props.questiona,props.questionb,props.questionc,props.correctanswer]
 
-    for(let x =0; x<4; x++){
-        let rando =[Math.floor(Math.random() * 4)]
-        let first = questions[x];
-        let picked = questions[rando];
-        questions[rando] = first;
-        questions[x] = picked;
-        
-    }
+    React.useEffect(() => {
+        for(let x =0; x<4; x++){
+            let rando =[Math.floor(Math.random() * 4)]
+            let first = questions[x];
+            let picked = questions[rando];
+            questions[rando] = first;
+            questions[x] = picked;
+            
+        }
+    }, [buttons])
+    
 
     function picked(num){
-        selected = num;
+        SetSelected(num);
         console.log(num);
+        console.log(props.id);
     }
    
 return(
