@@ -9,20 +9,23 @@ export default function Questions(props){
 
     
     console.log("answer is" +answer)
+    
     function picked(num){
         SetSelected(num);
         props.questions[selected] == answer?  correct=true:correct =false;
-        console.log(correct);
+        console.log("Your selection is "+correct)
+    
     }
    
+  
 return(
     <>
     <h2>{props.mainquestion}</h2>
     <div className="options">
-    {props.questions[0]!=null && <button className="b11" style={{background:selected==0?"DarkGrey":"LightGrey "}} onClick={() => picked(0)} >{props.questions[0]}</button>}
-    {props.questions[1]!=null &&  <button className="b12" style={{background:selected==1?"DarkGrey":"LightGrey "}} onClick={() => picked(1)} >{props.questions[1]}</button>}
-    {props.questions[2]!=null && <button className="b13" style={{background:selected==2?"DarkGrey":"LightGrey "}} onClick={() => picked(2)} >{props.questions[2]}</button>}
-    {props.questions[3]!=null && <button className="b14" style={{background:selected==3?"DarkGrey":"LightGrey "}} onClick={() => picked(3)} >{props.questions[3]}</button>}
+    {props.questions[0]!=null && <button className="b11" style={{background:selected==0?"DarkGrey":"LightGrey "}} onClick={() => picked(0)} onMouseDown={props.questions[0]==props.correctanswer? props.handleClick:console.log("naj")} >{props.questions[0]}</button>}
+    {props.questions[1]!=null &&  <button className="b12" style={{background:selected==1?"DarkGrey":"LightGrey "}} onClick={() => picked(1)} onMouseDown={props.questions[1]==props.correctanswer? props.handleClick:console.log("naj")}>{props.questions[1]}</button>}
+    {props.questions[2]!=null && <button className="b13" style={{background:selected==2?"DarkGrey":"LightGrey "}} onClick={() => picked(2)} onMouseDown={props.questions[2]==props.correctanswer? props.handleClick:console.log("naj")}>{props.questions[2]}</button>}
+    {props.questions[3]!=null && <button className="b14" style={{background:selected==3?"DarkGrey":"LightGrey "}} onClick={() => picked(3)} onMouseDown={props.questions[3]==props.correctanswer? props.handleClick:console.log("naj")}>{props.questions[3]}</button>}
     </div>
     <hr></hr>
     </>
