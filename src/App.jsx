@@ -7,8 +7,11 @@ function App() {
   const [count, setCount] = useState(0)
   const [isShown, SetShow] = React.useState(true)
   const [apidata, SetData] = React.useState([])
+  const [checkanswers,SetAnswers] = React.useState(false);
+  let correcttracker = 0;
   let keyx = 0;
   function toggle(){
+    console.log("mandem");
     SetShow(prevState => !prevState)
   }
 
@@ -23,8 +26,12 @@ function App() {
     }, [isShown])
   
 
-    function selectionhandler(){
-
+    function correctlyselected(){
+      console.log("Indeed is right");
+     correcttracker++;
+     console.log(correcttracker);
+    
+      
     }
 
 
@@ -50,6 +57,7 @@ function App() {
         <Questions
         key = {keyx++}
         id = {keyx}
+        handleClick ={correctlyselected}
         mainquestion = {travel.question}
         correctanswer = {travel.correct_answer}
         questions = {questionsx}
