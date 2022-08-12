@@ -9,8 +9,10 @@ function App() {
   const [apidata, SetData] = React.useState([])
   const [checkanswers,SetAnswers] = React.useState(false);
   const[refresh,SetRefresh] =React.useState(false);
+  const[finalscore,SetScore] =React.useState(0);
   let correcttracker = 0;
   let keyx = 0;
+  
   function toggle(){
     console.log("mandem");
     SetShow(prevState => !prevState)
@@ -34,8 +36,14 @@ function App() {
 
     function done(){
       if(checkanswers==false){
-        
-
+        let a = 0;
+        correctcount.forEach(element => {
+          if(element==true){
+            a++
+            SetScore(prevState=>a);
+          }
+        });
+        console.log(finalscore);
         SetAnswers(prevState=>!prevState);
       }
     
@@ -44,7 +52,7 @@ function App() {
     function playagain(){
       SetAnswers(prevState=>false);
       SetRefresh(prevState => !prevState);
-     
+      SetScore(prevState=>0);
       
     }
     console.log("Correct count is " +correctcount)
@@ -92,7 +100,7 @@ function App() {
       </div>
 
       <div className='results'>
-       {checkanswers && <h2>You Scored 3/5 answers correct!</h2>} 
+       {checkanswers && <h2>You Scored {finalscore}/5 answers correct!</h2>} 
         {checkanswers && <button type="submit" className="checkall" onClick={playagain}>Play Again?</button>}
       </div>
     </div>
