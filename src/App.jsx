@@ -8,6 +8,7 @@ function App() {
   const [isShown, SetShow] = React.useState(true)
   const [apidata, SetData] = React.useState([])
   const [checkanswers,SetAnswers] = React.useState(false);
+  const[refresh,SetRefresh] =React.useState(false);
   let correcttracker = 0;
   let keyx = 0;
   function toggle(){
@@ -22,16 +23,16 @@ function App() {
             console.log(data.results);
             SetData(data.results);
           
-
+            console.log("ATTENTION IT IS" +data.results)
             
         }
         getQuestions()
-    }, [isShown])
+    }, [refresh])
   
 
     function correctlyselected(){
       if(checkanswers==false){
-        console.log("Indeed is right");
+       
         correcttracker++;
         console.log(correcttracker);
       }
@@ -45,7 +46,12 @@ function App() {
     
     }
 
-
+    function playagain(){
+      SetAnswers(prevState=>false);
+      SetRefresh(prevState => !prevState);
+     
+      
+    }
 
     
     const questionsdata = apidata.map(travel=>{
@@ -74,6 +80,7 @@ function App() {
         correctanswer = {travel.correct_answer}
         questions = {questionsx}
         handin={checkanswers}
+        newgame={refresh}
       />
       )
       
@@ -86,12 +93,12 @@ function App() {
          {!isShown&& questionsdata}
 
       <div className='ba'>
-        <button type='submit' onClick={done} className="checkall"> Check Answers</button>
+       {!checkanswers&& <button type='submit' onClick={done} className="checkall"> Check Answers</button>} 
       </div>
 
       <div className='results'>
-        <h2>You Scored 3/5 answers correct!</h2>
-        <button type="submit" className="checkall">Play Again?</button>
+       {checkanswers && <h2>You Scored 3/5 answers correct!</h2>} 
+        {checkanswers && <button type="submit" className="checkall" onClick={playagain}>Play Again?</button>}
       </div>
     </div>
   )
