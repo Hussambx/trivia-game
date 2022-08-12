@@ -7,7 +7,7 @@
 }
 
 h2{
-  margin-top: 12px;
+  margin-top: 25px;
   text-align: center;
 }
 h1{
@@ -58,6 +58,23 @@ button:hover{
 }
 
 hr{
-  margin-top: 15px;
-  width: 100%;
+  width: 50%;
+  margin: auto;
+  margin-top: 25px;
+}
+
+.checkall{
+ display: block;
+ margin: auto;
+ width: 200px;
+ height: 50px;
+ background: #4D5B9E;
+color: white;
+border-radius:10px;
+border-style: none;
+margin-top: 20px;
+}
+
+button{
+  border-style: none;
 }
