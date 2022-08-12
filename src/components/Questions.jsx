@@ -1,10 +1,10 @@
 import React from "react";
-
+import { useState } from 'react'
 export default function Questions(props){
     let answer = props.correctanswer; //This just saves the correct answer 
     let nomore = false
-   const [selected, SetSelected] = React.useState(5); //This state tracks the selected user option
-    const[qorder,SetOrder] = React.useState(props.questions); //This state saves the randomized order of each question passed by app.jsx 
+   const [selected, SetSelected] = useState(5); //This state tracks the selected user option
+    const[qorder,SetOrder] = useState(props.questions); //This state saves the randomized order of each question passed by app.jsx 
 
 
 

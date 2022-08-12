@@ -4,12 +4,12 @@ import Questions from "./components/Questions"
 import React from "react"
 
 function App() {
-  const [correctcount, setCount] = React.useState([false,false,false,false,false]) //This state is the array that keeps track of the amount of amount of selected correct answers 
-  const [isShown, SetShow] = React.useState(true) //This state updates once the user hits startquiz it switchs the screens to the quiz screen
-  const [apidata, SetData] = React.useState([]) //This state saves the api data fetched from the server
-  const [checkanswers,SetAnswers] = React.useState(false);  //This state updates to true once the player selects "check answers"
-  const[refresh,SetRefresh] =React.useState(false); //This state updates everytime the user hits "play again", causing new api data to be fetched
-  const[finalscore,SetScore] =React.useState(0); //This state keeps track of the final score of the player 
+  const [correctcount, setCount] = useState([false,false,false,false,false]) //This state is the array that keeps track of the amount of amount of selected correct answers 
+  const [isShown, SetShow] = useState(true) //This state updates once the user hits startquiz it switchs the screens to the quiz screen
+  const [apidata, SetData] = useState([]) //This state saves the api data fetched from the server
+  const [checkanswers,SetAnswers] = useState(false);  //This state updates to true once the player selects "check answers"
+  const[refresh,SetRefresh] =useState(false); //This state updates everytime the user hits "play again", causing new api data to be fetched
+  const[finalscore,SetScore] =useState(0); //This state keeps track of the final score of the player 
   let keyx = 0;
 
   //This function switchs from startscreen to question screen 
