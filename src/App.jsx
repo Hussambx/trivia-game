@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Start from "./components/StartScreen"
 import Questions from "./components/Questions"
-import React from "React"
+import React from "react"
 
 function App() {
   const [correctcount, setCount] = React.useState([false,false,false,false,false]) //This state is the array that keeps track of the amount of amount of selected correct answers 
