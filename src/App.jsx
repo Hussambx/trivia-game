@@ -21,21 +21,33 @@ function App() {
             const data = await res.json()
             console.log(data.results);
             SetData(data.results);
+          
+
+            
         }
         getQuestions()
     }, [isShown])
   
 
     function correctlyselected(){
-      console.log("Indeed is right");
-     correcttracker++;
-     console.log(correcttracker);
-    
+      if(checkanswers==false){
+        console.log("Indeed is right");
+        correcttracker++;
+        console.log(correcttracker);
+      }
       
+    }
+
+    function done(){
+      if(checkanswers==false){
+        SetAnswers(prevState=>!prevState);
+      }
+    
     }
 
 
 
+    
     const questionsdata = apidata.map(travel=>{
       console.log(travel.correct_answer);
 
@@ -61,7 +73,7 @@ function App() {
         mainquestion = {travel.question}
         correctanswer = {travel.correct_answer}
         questions = {questionsx}
-        
+        handin={checkanswers}
       />
       )
       
@@ -74,7 +86,7 @@ function App() {
          {!isShown&& questionsdata}
 
       <div button>
-        <button type='submit'> Check Answers</button>
+        <button type='submit' onClick={done}> Check Answers</button>
       </div>
 
     </div>
