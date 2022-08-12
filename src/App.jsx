@@ -17,7 +17,7 @@ function App() {
 
   React.useEffect(() => {
         async function getQuestions() {
-            const res = await fetch("https://opentdb.com/api.php?amount=2")
+            const res = await fetch("https://opentdb.com/api.php?amount=5")
             const data = await res.json()
             console.log(data.results);
             SetData(data.results);
@@ -85,10 +85,14 @@ function App() {
        {isShown &&<Start handleClick ={toggle}/>}
          {!isShown&& questionsdata}
 
-      <div button>
-        <button type='submit' onClick={done}> Check Answers</button>
+      <div className='ba'>
+        <button type='submit' onClick={done} className="checkall"> Check Answers</button>
       </div>
 
+      <div className='results'>
+        <h2>You Scored 3/5 answers correct!</h2>
+        <button type="submit" className="checkall">Play Again?</button>
+      </div>
     </div>
   )
 }
