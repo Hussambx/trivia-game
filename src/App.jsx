@@ -53,7 +53,7 @@ function App() {
       SetAnswers(prevState=>false);
       SetRefresh(prevState => !prevState);
       SetScore(prevState=>0);
-      
+      setCount(prevState=>[false,false,false,false,false]);
     }
     
     //This function goes through each instance of api data, it randomly sorts the questions and then using props its sent to the questions.jsx 
@@ -98,7 +98,7 @@ function App() {
 
 
       <div className='ba'>
-       {!checkanswers&& <button type='submit' onClick={done} className="checkall"> Check Answers</button>} 
+       {!checkanswers&& !isShown && <button type='submit' onClick={done} className="checkall"> Check Answers</button>} 
       </div>
 
       <div className='results'>
