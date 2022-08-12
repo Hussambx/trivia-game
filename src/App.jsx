@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import Start from "./components/StartScreen"
 import Questions from "./components/Questions"
 import React from "React"
+
 function App() {
   const [correctcount, setCount] = useState([false,false,false,false,false])
   const [isShown, SetShow] = React.useState(true)
@@ -10,30 +10,29 @@ function App() {
   const [checkanswers,SetAnswers] = React.useState(false);
   const[refresh,SetRefresh] =React.useState(false);
   const[finalscore,SetScore] =React.useState(0);
-  let correcttracker = 0;
   let keyx = 0;
-  
+
+  //This function switchs from startscreen to question screen 
   function toggle(){
     console.log("mandem");
     SetShow(prevState => !prevState)
   }
 
+  //This function fetchs the data from the trivia api and places it into the apidata state
   React.useEffect(() => {
         async function getQuestions() {
-            const res = await fetch("https://opentdb.com/api.php?amount=1")
+            const res = await fetch("https://opentdb.com/api.php?amount=5")
             const data = await res.json()
             console.log(data.results);
             SetData(data.results);
-          
-            console.log("ATTENTION IT IS" +data.results)
-            
         }
         getQuestions()
     }, [refresh])
   
 
     
-
+//This function triggers once the user has pressed on check answers, it then goes through the correct count array and totals the # of 
+// correct answers and sets that amount into the setscore state for it to render 
     function done(){
       if(checkanswers==false){
         let a = 0;
@@ -49,19 +48,18 @@ function App() {
     
     }
 
+    //This function triggers once the user clicks playagain, it resets the refresh state which then triggers the api fetch function and it sets the # of correct answers to zero
     function playagain(){
       SetAnswers(prevState=>false);
       SetRefresh(prevState => !prevState);
       SetScore(prevState=>0);
       
     }
-    console.log("Correct count is " +correctcount)
     
+    //This function goes through each instance of api data, it randomly sorts the questions and then using props its sent to the questions.jsx 
     const questionsdata = apidata.map(travel=>{
-      console.log(travel.correct_answer);
-
       let questionsx = [travel.incorrect_answers[0],travel.incorrect_answers[1],travel.incorrect_answers[2],travel.correct_answer]
-
+      //For statement below randomly sorts the questionsx array^
       for(let x =0; x<4; x++){
         let rando =[Math.floor(Math.random() * 4)]
         if(rando==x){
@@ -73,7 +71,7 @@ function App() {
         questionsx[x] = picked;
     }
 
-
+    //Returns the given data and sends it to questions.jsx 
       return(
         <Questions
         key = {keyx++}
@@ -94,6 +92,7 @@ function App() {
     <div className="App">
        {isShown &&<Start handleClick ={toggle}/>}
          {!isShown&& questionsdata}
+
 
       <div className='ba'>
        {!checkanswers&& <button type='submit' onClick={done} className="checkall"> Check Answers</button>} 
