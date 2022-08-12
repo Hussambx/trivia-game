@@ -4,7 +4,7 @@ import Start from "./components/StartScreen"
 import Questions from "./components/Questions"
 import React from "React"
 function App() {
-  const [count, setCount] = useState(0)
+  const [correctcount, setCount] = useState([false,false,false,false,false])
   const [isShown, SetShow] = React.useState(true)
   const [apidata, SetData] = React.useState([])
   const [checkanswers,SetAnswers] = React.useState(false);
@@ -18,7 +18,7 @@ function App() {
 
   React.useEffect(() => {
         async function getQuestions() {
-            const res = await fetch("https://opentdb.com/api.php?amount=5")
+            const res = await fetch("https://opentdb.com/api.php?amount=1")
             const data = await res.json()
             console.log(data.results);
             SetData(data.results);
@@ -30,17 +30,12 @@ function App() {
     }, [refresh])
   
 
-    function correctlyselected(){
-      if(checkanswers==false){
-       
-        correcttracker++;
-        console.log(correcttracker);
-      }
-      
-    }
+    
 
     function done(){
       if(checkanswers==false){
+        
+
         SetAnswers(prevState=>!prevState);
       }
     
@@ -52,7 +47,7 @@ function App() {
      
       
     }
-
+    console.log("Correct count is " +correctcount)
     
     const questionsdata = apidata.map(travel=>{
       console.log(travel.correct_answer);
@@ -75,12 +70,12 @@ function App() {
         <Questions
         key = {keyx++}
         id = {keyx}
-        handleClick ={correctlyselected}
         mainquestion = {travel.question}
         correctanswer = {travel.correct_answer}
         questions = {questionsx}
         handin={checkanswers}
         newgame={refresh}
+        trackstats={correctcount}
       />
       )
       
