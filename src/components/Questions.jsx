@@ -4,10 +4,10 @@ export default function Questions(props){
     let answer = props.correctanswer; //This just saves the correct answer 
     let nomore = false
    const [selected, SetSelected] = useState(5); //This state tracks the selected user option
-    const[qorder,SetOrder] = useState(props.questions); //This state saves the randomized order of each question passed by app.jsx 
+    const[qorder,SetOrder] = useState([]); //This state saves the randomized order of each question passed by app.jsx 
 
-
-
+   
+    
     //This useeffect fires everytime that props.handin is changed, props.handin indicated that the check answers button had been pressed
     //It then proceeds to check if the current selected option is correct, and if it is it updates the props.trackstats array state 
    React.useEffect(() => {
