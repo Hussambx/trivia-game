@@ -1,13 +1,13 @@
 import React from "react";
 import { useState } from 'react'
 export default function Questions(props){
-    let answer = props.correctanswer; //This just saves the correct answer 
+    let answer = "Hi"; //This just saves the correct answer 
     let nomore = false
    const [selected, SetSelected] = useState(5); //This state tracks the selected user option
     const[qorder,SetOrder] = useState([]); //This state saves the randomized order of each question passed by app.jsx 
 
-   
-    
+   if(props.questions!=null){
+     answer = props.correctanswer;
     //This useeffect fires everytime that props.handin is changed, props.handin indicated that the check answers button had been pressed
     //It then proceeds to check if the current selected option is correct, and if it is it updates the props.trackstats array state 
    React.useEffect(() => {
@@ -35,7 +35,7 @@ React.useEffect(() => {
     SetSelected(-1);
 }, [props.newgame])
 
-
+   }
 
    
     //this function fires everytime there is a onClick event, what it does it it checks if the selected option is the answer or not
@@ -47,7 +47,7 @@ React.useEffect(() => {
             qorder[num] == answer?  props.trackstats[props.id]=true:props.trackstats[props.id]=false;
         }
     }
-   
+
 
   //Found within the return is each button, there is a total of 4 buttons
   //it first checks to see if the question actually exists, it makes sure the qorder[num] is not null as sometimes there might be a true or false question
