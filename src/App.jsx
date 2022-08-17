@@ -11,7 +11,7 @@ function App() {
   const[refresh,SetRefresh] =useState(false); //This state updates everytime the user hits "play again", causing new api data to be fetched
   const[finalscore,SetScore] =useState(0); //This state keeps track of the final score of the player 
   let keyx = 0;
-
+  let questionsx = ["Hi","Test","Me","Error"]
   //This function switchs from startscreen to question screen 
   function toggle(){
     console.log("mandem");
