@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Start from "./components/StartScreen"
 import Questions from "./components/Questions"
 import React from "react"
-
+import {decode} from 'html-entities'; //HTML decoder 
 function App() {
   const [correctcount, setCount] = useState([false,false,false,false,false]) //This state is the array that keeps track of the amount of amount of selected correct answers 
   const [isShown, SetShow] = useState(true) //This state updates once the user hits startquiz it switchs the screens to the quiz screen
@@ -67,6 +67,9 @@ function App() {
         if(rando==x){
             rando =[Math.floor(Math.random() * 4)]
         }
+        if(questionsx[x]!=null){  //Decodes each instance of array if not null 
+          questionsx[x] = decode(questionsx[x]);
+        }
         let first = questionsx[x];
         let picked = questionsx[rando];
         questionsx[rando] = first;
@@ -78,7 +81,7 @@ function App() {
         <Questions
         key = {keyx++}
         id = {keyx}
-        mainquestion = {travel.question}
+        mainquestion = {decode(travel.question)}
         correctanswer = {travel.correct_answer}
         questions = {questionsx}
         handin={checkanswers}
